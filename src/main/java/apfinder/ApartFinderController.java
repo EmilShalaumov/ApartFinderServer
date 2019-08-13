@@ -29,4 +29,9 @@ public class ApartFinderController {
         //return new User(username, password);
     }
 
+    @RequestMapping("/main/apartments")
+    public String apartments(@RequestParam(value = "tokenstring", defaultValue = "incorrect") String tokenString) {
+        return "{ \"response\" : \"" + tokenString + "\" }";
+    }
+
 }
