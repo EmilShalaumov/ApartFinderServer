@@ -54,4 +54,20 @@ public class DatabaseAdapter {
 
         return newToken;
     }
+
+    public Token validateToken(String tokenString) {
+        if (!initializeDbConnection()) {
+            System.out.println("Unable to connect to DB");
+            return null;
+        }
+
+        MongoCollection<Document> tokens = database.getCollection("sessiontokens");
+        Document token = tokens.find(new Document("tokenstring", tokenString)).first();
+        if (token == null) {
+            System.out.println("Token doesn't exist.");
+            return null;
+        }
+
+        return new Token((String) token.get("tokenstring"), new Timestamp(token.getDate("timestamp").getTime()), (ObjectId) token.get("userid"));
+    }
 }

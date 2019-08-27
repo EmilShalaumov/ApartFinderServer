@@ -30,8 +30,12 @@ public class ApartFinderController {
     }
 
     @RequestMapping("/main/apartments")
-    public String apartments(@RequestParam(value = "tokenstring", defaultValue = "incorrect") String tokenString) {
-        return "{ \"response\" : \"" + tokenString + "\" }";
+    public Response apartments(@RequestParam(value = "tokenstring", defaultValue = "incorrect") String tokenString) {
+        Token sessionToken = db.validateToken(tokenString);
+        if (sessionToken == null) {
+            return new Response("fail", null);
+        }
+        return new Response("success", sessionToken);
     }
 
 }

@@ -1,15 +1,15 @@
 package Model;
 
 public class Response {
-    private String responseString;
+    private Object responseString;
     private Token sessionToken;
 
-    public Response(String responseString, Token token) {
+    public Response(Object responseString, Token token) {
         this.responseString = responseString;
         this.sessionToken = token;
     }
 
-    public String getResponseString() {
+    public Object getResponseString() {
         return responseString;
     }
 

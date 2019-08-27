@@ -25,4 +25,10 @@ public class DatabaseAdapterTest {
         }*/
     }
 
+    @Test
+    public void validateToken() {
+        DatabaseAdapter db = new DatabaseAdapter();
+        Token token = db.validateToken("0mfRdaAZv19gtTBQSxQ64wmIKWeLhmCbbjeuS7uJgcynpQMekJAm2vI0psE9KCRx5IXYVRq6gEpCl43iFVwfZ27wvMpJfRvztsLdWQffEsQ5Cp5B56DR0t8g0BmfRzHMtgT3tbyr6U5BkOoGSUUkHoeWiLrlCWriFoc7FIjqhkXPUiCzg2luIACBSq2j3Fdu7kUwcSLuupbpWcB7Y8vPoKmOCiEZEc2CxUsd1QGwA4r75Ip4bEuhvhLIuo6VXESO");
+        System.out.println(token.getEffectiveTimestamp());
+    }
 }
